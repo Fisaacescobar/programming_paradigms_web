@@ -1,4 +1,4 @@
-Mini sitio JS/HTML (Paradigmas de Programación)
+## Mini sitio JS/HTML
 
 Pequeña app web sin dependencias para mostrar en JavaScript:
 - Imperativo vs Funcional (mismas métricas implementadas de dos formas)
