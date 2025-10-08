@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Paradigmas de Programación — Mini sitio JS/HTML</title>
+  <style>
+    :root { --bg:#0b0d10; --panel:#12151a; --muted:#9aa4b2; --fg:#e5e7eb; --accent:#4f46e5; }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial, sans-serif; background: var(--bg); color: var(--fg); }
+    header { padding: 24px; border-bottom: 1px solid #1f2430; background: linear-gradient(180deg, #0e1116, #0b0d10); }
+    h1 { margin: 0 0 8px; font-size: 22px; }
+    .muted { color: var(--muted); font-size: 14px; }
+    main { padding: 24px; max-width: 1100px; margin: 0 auto; }
+    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .panel { background: var(--panel); border: 1px solid #1f2430; border-radius: 12px; padding: 16px; }
+    .controls { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+    button, select { background: #171b22; color: var(--fg); border: 1px solid #2a3140; border-radius: 10px; padding: 10px 14px; cursor: pointer; }
+    button:hover { border-color: var(--accent); }
+    .pill { background: #171b22; display: inline-block; padding: 6px 10px; border-radius: 999px; border: 1px solid #2a3140; font-size: 12px; color: var(--muted); }
+    canvas { width: 100%; height: 260px; display: block; background: #0f1217; border-radius: 10px; border: 1px solid #1f2430; }
+    table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    th, td { padding: 8px 10px; border-bottom: 1px solid #1f2430; text-align: left; }
+    code { background: #0f1217; border: 1px solid #1f2430; padding: 2px 6px; border-radius: 6px; }
+    footer { padding: 16px 24px; color: var(--muted); border-top: 1px solid #1f2430; font-size: 13px; }
+    @media (max-width: 880px) { .row { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Mini sitio — Paradigmas de Programación (JS/HTML)</h1>
+    <div class="muted">Imperativo vs Funcional, OOP básica, eventos y async/await en vanilla JS.</div>
+  </header>
+
+  <main>
+    <section class="panel">
+      <div class="controls">
+        <label for="size" class="pill">Tamaño dataset</label>
+        <select id="size">
+          <option value="50">50</option>
+          <option value="200" selected>200</option>
+          <option value="1000">1000</option>
+        </select>
+
+        <button id="btn-generate">Generar datos</button>
+        <button id="btn-analyze">Analizar (imp vs func)</button>
+        <button id="btn-async">Cargar asincrónicamente (+50)</button>
+        <button id="btn-clear">Limpiar</button>
+        <span id="status" class="muted" aria-live="polite"></span>
+      </div>
+    </section>
+
+    <section class="row" style="margin-top:16px;">
+      <div class="panel">
+        <h3 style="margin:0 0 8px;">Resultados — Imperativo</h3>
+        <div id="out-imperative" class="muted">Sin datos.</div>
+      </div>
+      <div class="panel">
+        <h3 style="margin:0 0 8px;">Resultados — Funcional</h3>
+        <div id="out-functional" class="muted">Sin datos.</div>
+      </div>
+    </section>
+
+    <section class="panel" style="margin-top:16px;">
+      <div class="row">
+        <div>
+          <h3 style="margin:0 0 8px;">Vista previa (primeros 10)</h3>
+          <table id="table">
+            <thead>
+              <tr><th>#</th><th>categoria</th><th>precio</th><th>rating</th></tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+        <div>
+          <h3 style="margin:0 0 8px;">Gráfico (Canvas 2D)</h3>
+          <canvas id="chart" width="520" height="260"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel" style="margin-top:16px;">
+      <h3 style="margin:0 0 8px;">Notas rápidas</h3>
+      <ul class="muted">
+        <li><strong>Imperativo</strong>: bucles <code>for</code>, acumuladores, mutación controlada.</li>
+        <li><strong>Funcional</strong>: <code>map/filter/reduce</code>, inmutabilidad superficial (spread).</li>
+        <li><strong>OOP</strong>: clases <code>Dataset</code> y <code>Analyzer</code> separan datos y lógica.</li>
+        <li><strong>Async</strong>: <code>fetch</code> simulado con <code>Promise</code> + <code>await</code>.</li>
+        <li>Sin dependencias ni build; puro JS/HTML/CSS.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    Hecho con HTML + JS plano. Si algo crece, separar en módulos y añadir pruebas.
+  </footer>
+
+  <script defer src="./app.js"></script>
+</body>
+</html>
+
